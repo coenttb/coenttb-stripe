@@ -12,7 +12,6 @@ import Dependencies
 import Fluent
 import Foundation
 import Languages
-import Mailgun
 import Vapor
 
 extension CoenttbStripe.API.PaymentIntent {
