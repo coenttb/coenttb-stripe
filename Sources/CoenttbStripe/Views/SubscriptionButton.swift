@@ -10,12 +10,9 @@ public struct SubscribeFeature<Button:HTML>: HTML {
     let button: Button
     let priceId: String
     
-//    fetch("\(serverRouter.url(for: .api(.v1(.stripe(.subscription(.create(.init())))))))", {
     let fetchConfig:URL
     let createSubscription:URL
     let redirect: URL
-    
-    
     
     public init(
         priceId: String,
@@ -75,7 +72,7 @@ public struct SubscribeFeature<Button:HTML>: HTML {
                 const formContainer = document.getElementById('form-container-' + priceId);
                 formContainer.style.display = 'block';
                 formContainer.innerHTML = `
-                    \(String(html: subscriptionForm()))
+                    \(String(subscriptionForm()))
                 `;
                 
                 setupStripe();
