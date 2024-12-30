@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoenttbWebDependencies
+import Coenttb_Server
 
 extension InMemoryStore {
 

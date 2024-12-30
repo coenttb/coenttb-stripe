@@ -9,9 +9,9 @@ import Dependencies
 import Foundation
 @preconcurrency import StripeKit
 import Vapor
-import CoenttbStripe
+import Coenttb_Stripe
 
-extension CoenttbStripe.Client {
+extension Coenttb_Stripe.Client {
     public static func live(
         stripeSecretKey: String,
         httpClient: HTTPClient

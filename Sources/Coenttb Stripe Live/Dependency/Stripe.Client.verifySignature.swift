@@ -7,11 +7,11 @@
 
 import Foundation
 import Dependencies
-import CoenttbStripe
+import Coenttb_Stripe
 @preconcurrency import StripeKit
 import Vapor
 
-extension CoenttbStripe.Client {
+extension Coenttb_Stripe.Client {
     /// Verifies a Stripe signature for a given `Request`. This automatically looks for the header in the headers of the request and the body.
     /// - Parameters:
     ///     - req: The `Request` object to check header and body for
@@ -31,15 +31,15 @@ extension CoenttbStripe.Client {
     }
 }
 
-extension CoenttbStripe.Client {
+extension Coenttb_Stripe.Client {
     public func verifySignature(for request: Vapor.Request, secret: String, tolerance: Double = 300) throws {
-        try CoenttbStripe.Client.verifySignature(for: request, secret: secret, tolerance: tolerance)
+        try Coenttb_Stripe.Client.verifySignature(for: request, secret: secret, tolerance: tolerance)
     }
 }
 
 extension Vapor.Request {
     public func verifySignature(secret: String, tolerance: Double = 300) throws {
-        try CoenttbStripe.Client.verifySignature(for: self, secret: secret, tolerance: tolerance)
+        try Coenttb_Stripe.Client.verifySignature(for: self, secret: secret, tolerance: tolerance)
     }
 }
 

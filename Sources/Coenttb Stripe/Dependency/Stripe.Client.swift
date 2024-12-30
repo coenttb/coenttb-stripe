@@ -5,17 +5,13 @@
 //  Created by Coen ten Thije Boonkkamp on 10/09/2024.
 //
 
-import Foundation
-@preconcurrency import StripeKit
-import Dependencies
+import Coenttb_Web
 import DependenciesMacros
-import HTML
-import MemberwiseInit
+@preconcurrency import StripeKit
 
 public var stripeJsScript: some HTML { script().src("https://js.stripe.com/v3/") }
 
 @DependencyClient
-@MemberwiseInit(.public)
 public struct Client: Sendable {
     public var client: StripeKit.StripeClient
     public var prices: Client.Prices
@@ -24,14 +20,37 @@ public struct Client: Sendable {
     public var invoices: Client.Invoices
     public var paymentIntents: Client.PaymentIntents
     public var portalSession: Client.PortalSession
+    
+    public init(
+        client: StripeKit.StripeClient,
+        prices: Client.Prices,
+        customers: Client.Customers,
+        subscriptions: Client.Subscriptions,
+        invoices: Client.Invoices,
+        paymentIntents: Client.PaymentIntents,
+        portalSession: Client.PortalSession
+    ) {
+        self.client = client
+        self.prices = prices
+        self.customers = customers
+        self.subscriptions = subscriptions
+        self.invoices = invoices
+        self.paymentIntents = paymentIntents
+        self.portalSession = portalSession
+    }
 }
 
 extension Client {
-    @MemberwiseInit(.public)
     public struct EnvVars: Codable {
         public var endpointSecret: String
         public var publishableKey: String
         public var secretKey: String
+        
+        public init(endpointSecret: String, publishableKey: String, secretKey: String) {
+            self.endpointSecret = endpointSecret
+            self.publishableKey = publishableKey
+            self.secretKey = secretKey
+        }
     }
 }
 

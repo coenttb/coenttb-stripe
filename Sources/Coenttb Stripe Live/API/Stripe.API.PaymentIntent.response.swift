@@ -5,18 +5,13 @@
 //  Created by Coen ten Thije Boonkkamp on 15/09/2024.
 //
 
-import CoenttbStripe
-import CoenttbWebHTML
-import CoenttbStripe
-import Dependencies
-import Fluent
-import Foundation
-import Languages
+import Coenttb_Stripe
+import Coenttb_Web
 import Vapor
 
-extension CoenttbStripe.API.PaymentIntent {
+extension Coenttb_Stripe.API.PaymentIntent {
     static func response(
-        payment_intent: CoenttbStripe.API.PaymentIntent
+        payment_intent: Coenttb_Stripe.API.PaymentIntent
     ) async throws -> any AsyncResponseEncodable {
         switch payment_intent {
         case let .create(create):

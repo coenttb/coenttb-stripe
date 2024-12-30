@@ -6,16 +6,7 @@
 //
 
 
-import CasePaths
-import Dependencies
-import EmailAddress
-import Foundation
-import Languages
-import MemberwiseInit
-import URLRouting
-import MacroCodableKit
-import UrlFormCoding
-
+import Coenttb_Web
 
 extension API {
     public enum Subscription: Equatable, Sendable {
@@ -29,54 +20,78 @@ extension API {
 }
 
 extension API.Subscription {
-    @MemberwiseInit(.public)
-    @Codable
-    public struct InvoicePreview: Hashable, Sendable {
-        @CodingKey(.subscriptionId)
-        @Init(default: "")
+    public struct InvoicePreview: Codable, Hashable, Sendable {
         public let subscriptionId: String
-        
-        @CodingKey(.newPriceId)
-        @Init(default: "")
         public let newPriceId: String
+        
+        public init(
+            subscriptionId: String = "",
+            newPriceId: String = ""
+        ) {
+            self.subscriptionId = subscriptionId
+            self.newPriceId = newPriceId
+        }
+        
+        public enum CodingKeys: String, CodingKey {
+            case subscriptionId
+            case newPriceId
+        }
     }
 }
 
 extension API.Subscription {
-    @MemberwiseInit(.public)
-    @Codable
-    public struct Update: Hashable, Sendable {
-        @CodingKey(.subscriptionId)
-        @Init(default: "")
+    public struct Update: Codable, Hashable, Sendable {
         public let subscriptionId: String
-        
-        @CodingKey(.newPriceId)
-        @Init(default: "")
         public let newPriceId: String
+        
+        public init(
+            subscriptionId: String,
+            newPriceId: String
+        ) {
+            self.subscriptionId = subscriptionId
+            self.newPriceId = newPriceId
+        }
+        
+        public enum CodingKeys: String, CodingKey {
+            case subscriptionId
+            case newPriceId
+        }
     }
 }
 
 extension API.Subscription {
-    @MemberwiseInit(.public)
-    @Codable
-    public struct Create: Hashable, Sendable {
-        @CodingKey(.priceId)
-        @Init(default: "")
+    public struct Create: Codable, Hashable, Sendable {
         public let priceId: String
-        
-        @CodingKey(.name)
-        @Init(default: "")
         public let name: String
+        
+        public init(
+            priceId: String = "",
+            name: String = ""
+        ) {
+            self.priceId = priceId
+            self.name = name
+        }
+        
+        public enum CodingKeys: String, CodingKey {
+            case priceId
+            case name
+        }
     }
 }
 
 extension API.Subscription {
-    @MemberwiseInit(.public)
-    @Codable
-    public struct Cancel: Hashable, Sendable {
-        @CodingKey(.subscriptionId)
-        @Init(default: "")
+    public struct Cancel: Codable, Hashable, Sendable {
         public let subscriptionId: String
+        
+        public init(
+            subscriptionId: String = ""
+        ) {
+            self.subscriptionId = subscriptionId
+        }
+        
+        public enum CodingKeys: String, CodingKey {
+            case subscriptionId
+        }
     }
 }
 
@@ -143,11 +158,4 @@ extension UrlFormDecoder {
         decoder.parsingStrategy = .bracketsWithIndices
         return decoder
     }
-}
-
-extension String {
-    static let priceId:Self = "priceId"
-    static let subscriptionId:Self = "subscriptionId"
-    static let name:Self = "name"
-    static let newPriceId:Self = "newPriceId"
 }

@@ -1,8 +1,4 @@
-import Dependencies
-import Foundation
-import CoenttbWebHTML
-import MemberwiseInit
-import MacroCodableKit
+import Coenttb_Web
 
 public struct SubscribeFeature<Button:HTML>: HTML {
     
@@ -201,18 +197,24 @@ public struct SubscribeFeature<Button:HTML>: HTML {
 }
 
 
-@MemberwiseInit(.public)
-@Codable
-public struct SubscriptionFormData: Hashable {
-   @CodingKey("email")
-    @Init(default: "")
+public struct SubscriptionFormData: Codable, Hashable, Sendable {
     public let email: String?
-    
-   @CodingKey("name")
-    @Init(default: "")
     public let name: String?
-    
-   @CodingKey("password")
-    @Init(default: "")
     public let password: String?
+    
+    public init(
+        email: String? = "",
+        name: String? = "",
+        password: String? = ""
+    ) {
+        self.email = email
+        self.name = name
+        self.password = password
+    }
+    
+    public enum CodingKeys: String, CodingKey {
+        case email
+        case name
+        case password
+    }
 }

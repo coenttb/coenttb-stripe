@@ -6,20 +6,12 @@
 //
 
 
-import Dependencies
-import EmailAddress
-import Foundation
-import Languages
-import MemberwiseInit
-import URLRouting
-import MacroCodableKit
+import Coenttb_Web
 
-
-
-extension CoenttbStripe.API {
+extension Coenttb_Stripe.API {
     public enum PaymentIntent: Equatable, Sendable {
         //        case cancel
-        case create(CoenttbStripe.API.PaymentIntent.Create)
+        case create(Coenttb_Stripe.API.PaymentIntent.Create)
         //        case delete_discount
         //        case list
         //        case resume
@@ -29,31 +21,32 @@ extension CoenttbStripe.API {
     }
 }
 
-extension CoenttbStripe.API.PaymentIntent {
-    @MemberwiseInit(.public)
-    @Codable
-    public struct Create: Hashable, Sendable {
-        @CodingKey(.amount)
-        @Init(default: 0)
+extension Coenttb_Stripe.API.PaymentIntent {
+    public struct Create: Codable, Hashable, Sendable {
         public let amount: Int
+        
+        public init(
+            amount: Int = 0
+        ) {
+            self.amount = amount
+        }
+        
+        public enum CodingKeys: String, CodingKey {
+            case amount
+        }
     }
 }
 
 
-
-extension String {
-    static let amount:Self = "amount"
-}
-
-extension CoenttbStripe.API.PaymentIntent {
+extension Coenttb_Stripe.API.PaymentIntent {
     struct Router: ParserPrinter, Sendable {
         var body: some URLRouting.Router<API.PaymentIntent> {
             OneOf {
                 URLRouting.Route(.case(API.PaymentIntent.create)) {
                     Path { "create" }
-                    Parse(.memberwise(CoenttbStripe.API.PaymentIntent.Create.init)) {
+                    Parse(.memberwise(Coenttb_Stripe.API.PaymentIntent.Create.init)) {
                         Query {
-                            Field(CoenttbStripe.API.PaymentIntent.Create.CodingKeys.amount.rawValue, default: 0) { Digits() }
+                            Field(Coenttb_Stripe.API.PaymentIntent.Create.CodingKeys.amount.rawValue, default: 0) { Digits() }
                         }
                     }
                 }

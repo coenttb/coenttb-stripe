@@ -6,14 +6,7 @@
 //
 
 
-import Dependencies
-import Foundation
-import Languages
-import Vapor
-import CoenttbWebDependencies
-import CoenttbWebHTML
-import CoenttbMarkdown
-
+import Coenttb_Web
 //public struct PurchaseSubscriptions: HTML {
 //    
 //    @Dependency(\.serverRouter) var serverRouter

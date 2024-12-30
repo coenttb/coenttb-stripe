@@ -5,12 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 10/09/2024.
 //
 
-import Foundation
-import CoenttbWebHTML
-import Foundation
-import CoenttbWebHTML
-import Foundation
-import CoenttbWebHTML
+import Coenttb_Web
 
 public struct StripePaymentElement: HTML {
     let configUrl: String

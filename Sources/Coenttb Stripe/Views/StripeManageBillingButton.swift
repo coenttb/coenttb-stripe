@@ -5,8 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 17/09/2024.
 //
 
-import Foundation
-import CoenttbWebHTML
+import Coenttb_Web
 
 
 public struct StripeManageBillingFeature<Button: HTML>: HTML {

@@ -7,7 +7,7 @@
 
 import Foundation
 import Testing
-@testable import CoenttbStripe
+@testable import Coenttb_Stripe
 
 @Test
 func test() async throws  {

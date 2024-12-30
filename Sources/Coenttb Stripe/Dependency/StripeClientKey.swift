@@ -5,17 +5,15 @@
 //  Created by Coen ten Thije Boonkkamp on 20/09/2024.
 //
 
-import Foundation
-import StripeKit
-import Dependencies
-import CoenttbWeb
+@preconcurrency import StripeKit
+import Coenttb_Web
 
 public enum StripeClientKey {
     
 }
 
 extension StripeClientKey: TestDependencyKey {
-    public static let testValue: CoenttbStripe.Client? = .init(
+    public static let testValue: Coenttb_Stripe.Client? = .init(
         client: .init(httpClient: .testValue, apiKey: "test"),
         prices: .init(),
         customers: .init(),
@@ -27,7 +25,7 @@ extension StripeClientKey: TestDependencyKey {
 }
 
 extension DependencyValues {
-    public var stripe: CoenttbStripe.Client? {
+    public var stripe: Coenttb_Stripe.Client? {
         get { self[StripeClientKey.self] }
         set { self[StripeClientKey.self] = newValue }
     }

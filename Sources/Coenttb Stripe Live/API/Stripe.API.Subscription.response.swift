@@ -5,16 +5,13 @@
 //  Created by Coen ten Thije Boonkkamp on 17/09/2024.
 //
 
-import CoenttbStripe
-import CoenttbWebHTML
-import CoenttbStripe
-import Dependencies
+import Coenttb_Stripe
+import Coenttb_Web
+import Coenttb_Stripe
 import Fluent
-import Foundation
-import Languages
 import Vapor
 
-extension CoenttbStripe.API.Subscription {
+extension Coenttb_Stripe.API.Subscription {
     static func response(
         publishableKey: String,
         productLookupKeys: [String],
@@ -173,7 +170,7 @@ extension CoenttbStripe.API.Subscription {
                     subscription: subscription.subscriptionId
                 )
 
-                let responseData: [String: CoenttbStripe.Subscription] = [
+                let responseData: [String: Coenttb_Stripe.Subscription] = [
                     "subscription": canceledSubscription
                 ]
 

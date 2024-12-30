@@ -5,9 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 16/09/2024.
 //
 
-import Dependencies
-import Foundation
-import CoenttbWebHTML
+import Coenttb_Web
 
 
 public struct SubscriptionsOverview: HTML {
