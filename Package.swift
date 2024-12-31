@@ -16,6 +16,7 @@ extension Target.Dependency {
 extension Target.Dependency {
     static var coenttbWeb: Self { .product(name: "Coenttb Web", package: "coenttb-web") }
     static var coenttbServer: Self { .product(name: "Coenttb Server", package: "coenttb-server") }
+    static var foundationPrelude: Self { .product(name: "FoundationPrelude", package: "coenttb-server") }
     static var dependenciesMacros: Self { .product(name: "DependenciesMacros", package: "swift-dependencies") }
     static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
     static var vaporCommunityStripeKit: Self { .product(name: "StripeKit", package: "stripe-kit") }
@@ -34,6 +35,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/coenttb/coenttb-web.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-server.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/pointfree-server.git", branch: "main"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.1.5"),
         .package(url: "https://github.com/vapor-community/stripe-kit.git", from: "25.0.0"),
     ],
@@ -42,6 +44,7 @@ let package = Package(
             name: .coenttbStripe,
             dependencies: [
                 .coenttbWeb,
+                .foundationPrelude,
                 .dependenciesMacros,
                 .vaporCommunityStripeKit
             ]
